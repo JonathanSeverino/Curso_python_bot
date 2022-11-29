@@ -15,7 +15,6 @@ options.add_argument("--log-level=3")
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 driver.get("https://registro.br/")
 
-#Definindo o que ele vai pesquisar
 dominios = ["roboscompython.com.br", "hotmart.com.br", "uol.com.br", "pythoncurso.com.br"]
 
 for dominio in dominios:
