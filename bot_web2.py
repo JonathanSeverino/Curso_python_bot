@@ -8,6 +8,8 @@ import time
 
 print("Iniciando o robô...\n")
 
+resultado = open("resultado.txt", "w")
+
 #acessando o excel
 excel = xlrd.open_workbook('/media/jotha/Jonathan - Arquivos/Automacao_python/dominios.xls')
 planilha = excel.sheet_by_name('Plan1')
@@ -36,7 +38,9 @@ for linha_atual in range(0, linhas):
     time.sleep(1) #Para dar tempo da página renderizar
     driver.find_element(By.XPATH, '//*[@id="app"]/main/section/div[2]/div/p/span/strong')
     time.sleep(1)
-    print("Dominio {0} {1}".format(dominio, driver.find_element(By.XPATH, '//*[@id="app"]/main/section/div[2]/div/p/span/strong').text))
+    texto = "Dominio {0} {1}\n".format(dominio, driver.find_element(By.XPATH, '//*[@id="app"]/main/section/div[2]/div/p/span/strong').text)
+    resultado.write(texto)
 
+resultado.close()
 driver.close()
 print("Serviço encerrado!")
